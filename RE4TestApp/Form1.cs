@@ -1,4 +1,4 @@
-using JRPC_Client;
+﻿using JRPC_Client;
 using System.Windows.Forms;
 using XDevkit;
 using MetroFramework;
@@ -95,19 +95,19 @@ namespace RE4TestApp
     {"Tenth Item Slot", 3281685463U}
         };
 
-        Dictionary<string, uint> itemAmountOffsets = new Dictionary<string, uint>
-        {
-    {"First Item Amount", 3281685325U},
-    {"Second Item Amount", 3281685311U},
-    {"Third Item Amount", 3281685367U},
-    {"Fourth Item Amount", 3281685381U},
-    {"Fifth Item Amount", 3281685395U},
-    {"Sixth Item Amount", 3281685409U},
-    {"Seventh Item Amount", 3281685423U},
-    {"Eighth Item Amount", 3281685437U},
-    {"Ninth Item Amount", 3281685457U},
-    {"Tenth Item Amount", 3281685465U}
-        };
+        Dictionary<string, List<uint>> itemAmountOffsets = new Dictionary<string, List<uint>>
+{
+    {"First Item Amount", new List<uint> {3281685325U}},
+    {"Second Item Amount", new List<uint> {3281685311U}},
+    {"Third Item Amount", new List<uint> {3281685367U}},
+    {"Fourth Item Amount", new List<uint> {3281685381U}},
+    {"Fifth Item Amount", new List<uint> {3281685395U}},
+    {"Sixth Item Amount", new List<uint> {3281685409U}},
+    {"Seventh Item Amount", new List<uint> {3281685423U}},
+    {"Eighth Item Amount", new List<uint> {3281685437U}},
+    {"Ninth Item Amount", new List<uint> {3281685451U, 3281685457U}},
+    {"Tenth Item Amount", new List<uint> {3281685465U}}
+};
 
         Dictionary<string, uint> giveItemSlots = new Dictionary<string, uint>
         {
@@ -136,7 +136,7 @@ namespace RE4TestApp
     {"Custom TMP", 0x3E},
     {"Handcannon", 0x37},
     {"Handgun", 0x23},
-    {"Handgun with Silencer", 0x24},
+    {"Handgun w/ Silencer", 0x24},
     {"Infinite Launcher", 0x6D},
     {"Mine Thrower", 0x36},
     {"P.R.L 412", 0x41},
@@ -163,6 +163,7 @@ namespace RE4TestApp
     {"Rifle Ammo (Infrared)", 0xA0},
     {"TMP Ammo", 0x20},
     {"First Aid", 0x05},
+    {"Green Herb", 0x06},
     {"Mixed Herbs (G+R)", 0x14},
     {"Mixed Herbs (G+R+Y)", 0x15},
     {"Mixed Herbs (R+Y)", 0xA8},
@@ -250,16 +251,20 @@ namespace RE4TestApp
 
             if (itemAmountOffsets.ContainsKey(selectedSlot))
             {
-                uint selectedAmountOffset = itemAmountOffsets[selectedSlot];
-                byte[] amountBytes = new byte[] { selectedAmount };
+                List<uint> selectedAmountOffsets = itemAmountOffsets[selectedSlot];
 
-                JRPC.SetMemory(selectedAmountOffset, amountBytes);
+                foreach (var selectedAmountOffset in selectedAmountOffsets)
+                {
+                    byte[] amountBytes = new byte[] { selectedAmount };
+                    JRPC.SetMemory(selectedAmountOffset, amountBytes);
+                }
             }
             else
             {
 
             }
         }
+
 
 
         private void button4_Click(object sender, EventArgs e)
@@ -429,5 +434,57 @@ namespace RE4TestApp
                 )
             );
 
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+            string message = "Replace: replaces any gun currently in your inventory in the selected item slot.\n\nGive: gives you any small item listed, puts it in the discarded items inventory, have to move it into inventory from discarded side.\n\nSet: sets the amount you want for the selected item slot (max 255)\n\nPlease use 'Weapon Check' to see what guns are currently in which item slot.";
+            MessageBox.Show(message, "RE4 Modding Tool Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label4.Text);
+            string originalText = label4.Text;
+            label4.Text = "Copied!";
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+            timer.Interval = 1000;
+            timer.Tick += (timerSender, timerArgs) =>
+            {
+                label4.Text = originalText;
+                timer.Stop();
+                timer.Dispose();
+            };
+
+            timer.Start();
+        }
+
+        private int ptasState = 0;
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (ptasState)
+                {
+                    case 0:
+                        button11.Text = "PTAS: 99999999";
+                        JRPC.SetMemory(3261454408U, new byte[] { 0x0F, 0xFF, 0xFF, 0xFF });
+                        ptasState = 1;
+                        break;
+                    case 1:
+                        button11.Text = "PTAS: 1000";
+                        JRPC.SetMemory(3261454408U, new byte[] { 0x00, 0x00, 0x03, 0xE8 });
+                        ptasState = 2;
+                        break;
+                    case 2:
+                        button11.Text = "PTAS: bugged";
+                        JRPC.SetMemory(3261454408U, new byte[] { 0xAA, 0xAA, 0xFF, 0xFF });
+                        ptasState = 0;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred", "Error");
+            }
+        }
     }
 }

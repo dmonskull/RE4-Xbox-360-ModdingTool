@@ -39,16 +39,20 @@
             comboBox3 = new ComboBox();
             button4 = new Button();
             groupBox1 = new GroupBox();
+            button9 = new Button();
             button8 = new Button();
             button10 = new Button();
             button7 = new Button();
             comboBox4 = new ComboBox();
             comboBox5 = new ComboBox();
             groupBox2 = new GroupBox();
+            button11 = new Button();
             button6 = new Button();
             button5 = new Button();
             label2 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
+            label3 = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -145,6 +149,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(button9);
             groupBox1.Controls.Add(button8);
             groupBox1.Controls.Add(button10);
             groupBox1.Controls.Add(button7);
@@ -163,6 +168,17 @@
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             groupBox1.Text = "Inventory Changer";
+            // 
+            // button9
+            // 
+            button9.ForeColor = Color.Black;
+            button9.Location = new Point(6, 130);
+            button9.Name = "button9";
+            button9.Size = new Size(26, 23);
+            button9.TabIndex = 13;
+            button9.Text = "?";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click_1;
             // 
             // button8
             // 
@@ -217,6 +233,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(button11);
             groupBox2.Controls.Add(button6);
             groupBox2.Controls.Add(button5);
             groupBox2.ForeColor = Color.White;
@@ -226,6 +243,17 @@
             groupBox2.TabIndex = 10;
             groupBox2.TabStop = false;
             groupBox2.Text = "Main Mods";
+            // 
+            // button11
+            // 
+            button11.ForeColor = Color.Black;
+            button11.Location = new Point(153, 22);
+            button11.Name = "button11";
+            button11.Size = new Size(136, 34);
+            button11.TabIndex = 11;
+            button11.Text = "Change PTAS";
+            button11.UseVisualStyleBackColor = true;
+            button11.Click += button11_Click;
             // 
             // button6
             // 
@@ -264,12 +292,39 @@
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(89, 450);
+            label3.Name = "label3";
+            label3.Size = new Size(50, 13);
+            label3.TabIndex = 12;
+            label3.Text = "Litecoin:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(142, 450);
+            label4.Name = "label4";
+            label4.Size = new Size(239, 13);
+            label4.TabIndex = 13;
+            label4.Text = "ltc1qrrfwy7e3xcvhlyutu84nt6zaf5xxlpvtw59l57";
+            label4.Click += label4_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            ClientSize = new Size(470, 460);
+            ClientSize = new Size(470, 472);
+            Controls.Add(label4);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -313,5 +368,9 @@
         private ComboBox comboBox5;
         private Label label2;
         private System.Windows.Forms.Timer timer1;
+        private Button button9;
+        private Label label3;
+        private Label label4;
+        private Button button11;
     }
 }
