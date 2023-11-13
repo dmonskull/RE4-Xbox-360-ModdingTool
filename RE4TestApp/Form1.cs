@@ -83,31 +83,34 @@ namespace RE4TestApp
 
         Dictionary<string, uint> itemSlotOffsets = new Dictionary<string, uint>
         {
-    {"First Item Slot", 3281685323U},
-    {"Second Item Slot", 3281685309U},
-    {"Third Item Slot", 3281685365U},
-    {"Fourth Item Slot", 3281685379U},
-    {"Fifth Item Slot", 3281685393U},
-    {"Sixth Item Slot", 3281685407U},
-    {"Seventh Item Slot", 3281685421U},
-    {"Eighth Item Slot", 3281685435U},
-    {"Ninth Item Slot", 3281685449U},
-    {"Tenth Item Slot", 3281685463U}
+    {"First Item Slot", 3281685295U},
+    {"Second Item Slot", 3281685323U},
+    {"Third Item Slot", 3281685309U},
+    {"Fourth Item Slot", 3281685365U},
+    {"Fifth Item Slot", 3281685379U},
+    {"Sixth Item Slot", 3281685393U},
+    {"Seventh Item Slot", 3281685407U},
+    {"Eighth Item Slot", 3281685421U},
+    {"Ninth Item Slot", 3281685435U},
+    {"Tenth Item Slot", 3281685449U},
+    {"Eleventh Item Slot", 3281685463U}
         };
 
         Dictionary<string, List<uint>> itemAmountOffsets = new Dictionary<string, List<uint>>
-{
-    {"First Item Amount", new List<uint> {3281685325U}},
-    {"Second Item Amount", new List<uint> {3281685311U}},
-    {"Third Item Amount", new List<uint> {3281685367U}},
-    {"Fourth Item Amount", new List<uint> {3281685381U}},
-    {"Fifth Item Amount", new List<uint> {3281685395U}},
-    {"Sixth Item Amount", new List<uint> {3281685409U}},
-    {"Seventh Item Amount", new List<uint> {3281685423U}},
-    {"Eighth Item Amount", new List<uint> {3281685437U}},
-    {"Ninth Item Amount", new List<uint> {3281685451U, 3281685457U}},
-    {"Tenth Item Amount", new List<uint> {3281685465U}}
-};
+        {
+    {"First Item Amount", new List<uint> {3281685302U}},
+    {"Second Item Amount", new List<uint> {3281685324U}},
+    {"Third Item Amount", new List<uint> {3281685310U}},
+    {"Fourth Item Amount", new List<uint> {3281685366U}},
+    {"Fifth Item Amount", new List<uint> {3281685380U}},
+    {"Sixth Item Amount", new List<uint> {3281685394U}},
+    {"Seventh Item Amount", new List<uint> {3281685408U}},
+    {"Eighth Item Amount", new List<uint> {3281685422U}},
+    {"Ninth Item Amount", new List<uint> {3281685436U}},
+    {"Tenth Item Amount", new List<uint> {3281685450U, 3281685456U}},
+    {"Eleventh Item Amount", new List<uint> {3281685464U}}
+        };
+
 
         Dictionary<string, uint> giveItemSlots = new Dictionary<string, uint>
         {
@@ -118,7 +121,7 @@ namespace RE4TestApp
             {"Give Item Slot 5", 3281685547U}
         };
 
-        Dictionary<string, uint> giveItemSlots2 = new Dictionary<string, uint>
+        Dictionary<string, uint> enableItemSlots = new Dictionary<string, uint>
         {
     {"Give Item Slot 1", 3281685396U},
     {"Give Item Slot 2", 3281685424U},
@@ -247,7 +250,7 @@ namespace RE4TestApp
         private void button2_Click(object sender, EventArgs e)
         {
             string selectedSlot = comboBox3.Text;
-            byte selectedAmount = (byte)(numericUpDown1.Value);
+            ushort selectedAmount = (ushort)numericUpDown1.Value;
 
             if (itemAmountOffsets.ContainsKey(selectedSlot))
             {
@@ -255,13 +258,17 @@ namespace RE4TestApp
 
                 foreach (var selectedAmountOffset in selectedAmountOffsets)
                 {
-                    byte[] amountBytes = new byte[] { selectedAmount };
+                    byte[] amountBytes = BitConverter.GetBytes(selectedAmount);
+                    if (BitConverter.IsLittleEndian)
+                    {
+                        Array.Reverse(amountBytes);
+                    }
                     JRPC.SetMemory(selectedAmountOffset, amountBytes);
                 }
             }
             else
             {
-
+                // Handle the case when the selected slot is not found
             }
         }
 
@@ -403,9 +410,9 @@ namespace RE4TestApp
                 byte selectedValue = itemDictionary[comboBox4.Text];
                 JRPC.SetMemory(selectedSlotOffset, new byte[] { selectedValue });
             }
-            if (giveItemSlots2.ContainsKey(comboBox5.Text))
+            if (enableItemSlots.ContainsKey(comboBox5.Text))
             {
-                uint selectedSlotOffset = giveItemSlots2[comboBox5.Text];
+                uint selectedSlotOffset = enableItemSlots[comboBox5.Text];
                 JRPC.SetMemory(selectedSlotOffset, new byte[] { 0x01 });
             }
         }
@@ -436,7 +443,7 @@ namespace RE4TestApp
 
         private void button9_Click_1(object sender, EventArgs e)
         {
-            string message = "Replace: replaces any gun currently in your inventory in the selected item slot.\n\nGive: gives you any small item listed, puts it in the discarded items inventory, have to move it into inventory from discarded side.\n\nSet: sets the amount you want for the selected item slot (max 255)\n\nPlease use 'Weapon Check' to see what guns are currently in which item slot.";
+            string message = "Replace: replaces any gun currently in your inventory in the selected item slot.\n\nGive: gives you any small item listed, puts it in the discarded items inventory, have to move it into inventory from discarded side.\n\nSet: sets the amount you want for the selected item slot (max 999)\n\nPlease use 'Weapon Check' to see what guns are currently in which item slot.";
             MessageBox.Show(message, "RE4 Modding Tool Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -480,6 +487,75 @@ namespace RE4TestApp
                         ptasState = 0;
                         break;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred", "Error");
+            }
+        }
+
+        private bool godmodeleon;
+        private void button12_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!godmodeleon)
+                {
+                    button12.Text = "Godmode Leon: ON";
+                    JRPC.SetMemory(3261454420U, new byte[] { 0x7F });
+                }
+                else
+                {
+                    button12.Text = "Godmode Leon: OFF";
+                    JRPC.SetMemory(3261454420U, new byte[] { 0x6 });
+                }
+                godmodeleon = !godmodeleon;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred", "Error");
+            }
+        }
+
+        private bool godmodeashley;
+        private void button13_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!godmodeashley)
+                {
+                    button13.Text = "Godmode Ashley: ON";
+                    JRPC.SetMemory(3261454424U, new byte[] { 0x7F });
+                }
+                else
+                {
+                    button13.Text = "Godmode Ashley: OFF";
+                    JRPC.SetMemory(3261454424U, new byte[] { 0x6 });
+                }
+                godmodeashley = !godmodeashley;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred", "Error");
+            }
+        }
+
+        private bool camerafollow;
+        private void button14_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!camerafollow)
+                {
+                    button14.Text = "Camera Follow: OFF";
+                    JRPC.SetMemory(3261454526U, new byte[] { 0x02 });
+                }
+                else
+                {
+                    button14.Text = "Camera Follow: ON";
+                    JRPC.SetMemory(3261454526U, new byte[] { 0x01 });
+                }
+                camerafollow = !camerafollow;
             }
             catch (Exception ex)
             {

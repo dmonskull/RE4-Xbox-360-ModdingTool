@@ -46,6 +46,9 @@
             comboBox4 = new ComboBox();
             comboBox5 = new ComboBox();
             groupBox2 = new GroupBox();
+            button14 = new Button();
+            button13 = new Button();
+            button12 = new Button();
             button11 = new Button();
             button6 = new Button();
             button5 = new Button();
@@ -81,9 +84,9 @@
             // numericUpDown1
             // 
             numericUpDown1.Location = new Point(269, 80);
-            numericUpDown1.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            numericUpDown1.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(56, 23);
+            numericUpDown1.Size = new Size(48, 23);
             numericUpDown1.TabIndex = 2;
             // 
             // button2
@@ -233,6 +236,9 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(button14);
+            groupBox2.Controls.Add(button13);
+            groupBox2.Controls.Add(button12);
             groupBox2.Controls.Add(button11);
             groupBox2.Controls.Add(button6);
             groupBox2.Controls.Add(button5);
@@ -244,10 +250,43 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Main Mods";
             // 
+            // button14
+            // 
+            button14.ForeColor = Color.Black;
+            button14.Location = new Point(295, 62);
+            button14.Name = "button14";
+            button14.Size = new Size(136, 34);
+            button14.TabIndex = 14;
+            button14.Text = "Camera Follow";
+            button14.UseVisualStyleBackColor = true;
+            button14.Click += button14_Click;
+            // 
+            // button13
+            // 
+            button13.ForeColor = Color.Black;
+            button13.Location = new Point(11, 62);
+            button13.Name = "button13";
+            button13.Size = new Size(136, 34);
+            button13.TabIndex = 13;
+            button13.Text = "Godmode Ashley";
+            button13.UseVisualStyleBackColor = true;
+            button13.Click += button13_Click;
+            // 
+            // button12
+            // 
+            button12.ForeColor = Color.Black;
+            button12.Location = new Point(11, 22);
+            button12.Name = "button12";
+            button12.Size = new Size(136, 34);
+            button12.TabIndex = 12;
+            button12.Text = "Godmode Leon";
+            button12.UseVisualStyleBackColor = true;
+            button12.Click += button12_Click;
+            // 
             // button11
             // 
             button11.ForeColor = Color.Black;
-            button11.Location = new Point(153, 22);
+            button11.Location = new Point(295, 22);
             button11.Name = "button11";
             button11.Size = new Size(136, 34);
             button11.TabIndex = 11;
@@ -258,7 +297,7 @@
             // button6
             // 
             button6.ForeColor = Color.Black;
-            button6.Location = new Point(11, 62);
+            button6.Location = new Point(153, 62);
             button6.Name = "button6";
             button6.Size = new Size(136, 34);
             button6.TabIndex = 10;
@@ -269,7 +308,7 @@
             // button5
             // 
             button5.ForeColor = Color.Black;
-            button5.Location = new Point(11, 22);
+            button5.Location = new Point(153, 22);
             button5.Name = "button5";
             button5.Size = new Size(136, 34);
             button5.TabIndex = 9;
@@ -372,5 +411,8 @@
         private Label label3;
         private Label label4;
         private Button button11;
+        private Button button13;
+        private Button button12;
+        private Button button14;
     }
 }
