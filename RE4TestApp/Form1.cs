@@ -20,6 +20,7 @@ namespace RE4TestApp
         private void Form1_Load(object sender, EventArgs e)
         {
             InitializeDictionaries();
+            label2.Text = "                                          made by DMON";
             timer1.Start();
             try
             {
@@ -83,33 +84,53 @@ namespace RE4TestApp
 
         Dictionary<string, uint> itemSlotOffsets = new Dictionary<string, uint>
         {
-    {"First Item Slot", 3281685295U},
-    {"Second Item Slot", 3281685323U},
-    {"Third Item Slot", 3281685309U},
-    {"Fourth Item Slot", 3281685365U},
-    {"Fifth Item Slot", 3281685379U},
-    {"Sixth Item Slot", 3281685393U},
-    {"Seventh Item Slot", 3281685407U},
-    {"Eighth Item Slot", 3281685421U},
-    {"Ninth Item Slot", 3281685435U},
-    {"Tenth Item Slot", 3281685449U},
-    {"Eleventh Item Slot", 3281685463U}
+            {"1st Item Slot", 3281685295U},
+            {"2nd Item Slot", 3281685323U},
+            {"3rd Item Slot", 3281685309U},
+            {"4th Item Slot", 3281685365U},
+            {"5th Item Slot", 3281685379U},
+            {"6th Item Slot", 3281685393U},
+            {"7th Item Slot", 3281685407U},
+            {"8th Item Slot", 3281685421U},
+            {"9th Item Slot", 3281685435U},
+            {"10th Item Slot", 3281685449U},
+            {"11th Item Slot", 3281685491U},
+            {"12th Item Slot", 3281685533U},
+            {"13th Item Slot", 3281685547U},
+            {"14th Item Slot", 3281685561U},
+            {"15th Item Slot", 3281685603U},
+            {"16th Item Slot", 3281685673U},
+            {"17th Item Slot", 3281685701U},
+            {"18th Item Slot", 3281685715U},
+            {"19th Item Slot", 3281685729U},
+            {"20th Item Slot", 3281685813U}
         };
+
 
         Dictionary<string, List<uint>> itemAmountOffsets = new Dictionary<string, List<uint>>
         {
-    {"First Item Amount", new List<uint> {3281685302U}},
-    {"Second Item Amount", new List<uint> {3281685324U}},
-    {"Third Item Amount", new List<uint> {3281685310U}},
-    {"Fourth Item Amount", new List<uint> {3281685366U}},
-    {"Fifth Item Amount", new List<uint> {3281685380U}},
-    {"Sixth Item Amount", new List<uint> {3281685394U}},
-    {"Seventh Item Amount", new List<uint> {3281685408U}},
-    {"Eighth Item Amount", new List<uint> {3281685422U}},
-    {"Ninth Item Amount", new List<uint> {3281685436U}},
-    {"Tenth Item Amount", new List<uint> {3281685450U, 3281685456U}},
-    {"Eleventh Item Amount", new List<uint> {3281685464U}}
+            {"1st Item Amount", new List<uint> {3281685302U}},
+            {"2nd Item Amount", new List<uint> {3281685324U}},
+            {"3rd Item Amount", new List<uint> {3281685310U}},
+            {"4th Item Amount", new List<uint> {3281685366U}},
+            {"5th Item Amount", new List<uint> {3281685380U}},
+            {"6th Item Amount", new List<uint> {3281685394U}},
+            {"7th Item Amount", new List<uint> {3281685408U}},
+            {"8th Item Amount", new List<uint> {3281685422U}},
+            {"9th Item Amount", new List<uint> {3281685436U}},
+            {"10th Item Amount", new List<uint> {3281685450U, 3281685456U}},
+            {"11th Item Amount", new List<uint> {3281685492U}},
+            {"12th Item Amount", new List<uint> {3281685534U}},
+            {"13th Item Amount", new List<uint> {3281685548U}},
+            {"14th Item Amount", new List<uint> {3281685562U}},
+            {"15th Item Amount", new List<uint> {3281685604U}},
+            {"16th Item Amount", new List<uint> {3281685674U}},
+            {"17th Item Amount", new List<uint> {3281685702U}},
+            {"18th Item Amount", new List<uint> {3281685716U}},
+            {"19th Item Amount", new List<uint> {3281685730U}},
+            {"20th Item Amount", new List<uint> {3281685814U}},
         };
+
 
 
         Dictionary<string, uint> giveItemSlots = new Dictionary<string, uint>
@@ -123,108 +144,108 @@ namespace RE4TestApp
 
         Dictionary<string, uint> enableItemSlots = new Dictionary<string, uint>
         {
-    {"Give Item Slot 1", 3281685396U},
-    {"Give Item Slot 2", 3281685424U},
-    {"Give Item Slot 3", 3281685452U},
-    {"Give Item Slot 4", 3281685494U},
-    {"Give Item Slot 5", 3281685550U}
+            {"Give Item Slot 1", 3281685396U},
+            {"Give Item Slot 2", 3281685424U},
+            {"Give Item Slot 3", 3281685452U},
+            {"Give Item Slot 4", 3281685494U},
+            {"Give Item Slot 5", 3281685550U}
         };
 
         Dictionary<string, byte> itemDictionary = new Dictionary<string, byte>
         {
-    {"Matilda", 0x03},
-    {"Bow Gun", 0x10},
-    {"Chicago Typewriter", 0x34},
-    {"Combat Knife", 0x38},
-    {"Custom TMP", 0x3E},
-    {"Handcannon", 0x37},
-    {"Handgun", 0x23},
-    {"Handgun w/ Silencer", 0x24},
-    {"Infinite Launcher", 0x6D},
-    {"Mine Thrower", 0x36},
-    {"P.R.L 412", 0x41},
-    {"Red9", 0x25},
-    {"Red9 with Stock", 0x26},
-    {"Rifle (semi auto) with Infrared Scope", 0x51},
-    {"Rocket Launcher Special", 0x17},
-    {"Shotgun", 0x47},
-    {"Killer7", 0x2A},
-    {"Killer7 w/ Silencer", 0x2B},
-    {"Punisher", 0x40},
-    {"Krauser's Bow", 0x52},
-    {"Krauser's Knife", 0x0D},
-    {"Hand Grenade", 0x01},
-    {"Flash Grenade", 0x0E},
-    {"Incendiary Grenade", 0x02},
-    {"Arrows", 0x72},
-    {"Bowgun Bolts", 0x11},
-    {"Chicago Typewriter Ammo", 0x6A},
-    {"Handgun Ammo", 0x04},
-    {"Handcannon Ammo", 0x1A},
-    {"Shotgun Ammo", 0x18},
-    {"Rifle Ammo", 0x07},
-    {"Rifle Ammo (Infrared)", 0xA0},
-    {"TMP Ammo", 0x20},
-    {"First Aid", 0x05},
-    {"Green Herb", 0x06},
-    {"Mixed Herbs (G+R)", 0x14},
-    {"Mixed Herbs (G+R+Y)", 0x15},
-    {"Mixed Herbs (R+Y)", 0xA8},
-    {"Activation Key (blue)", 0x31},
-    {"Activation Key (red)", 0x33},
-    {"Black Bass", 0x95},
-    {"Black Bass (L)", 0x97},
-    {"Blacktail", 0x27},
-    {"Blacktail with Silencer", 0x28},
-    {"Bonus Time", 0x73},
-    {"Brass Pocket Watch", 0x59},
-    {"Camp Key", 0x8C},
-    {"Castle Gate Key", 0xA7},
-    {"Elegant Headdress", 0x5A},
-    {"Emergency Lock Key Card", 0x74},
-    {"Emerald", 0xA1},
-    {"Freezer Key Card", 0x84},
-    {"Gallery Key", 0xA3},
-    {"Gold Chicken Egg", 0x0A},
-    {"Gold Sword", 0x80},
-    {"Green Catseye", 0x5F},
-    {"Hexagonal Emblem", 0xA6},
-    {"JetSki Key", 0x88},
-    {"Key to the Mine", 0x7B},
-    {"Lift Activation Key", 0x8E},
-    {"Pearl Pendant", 0x58},
-    {"Piece of the Holy Beast, Eagle", 0x87},
-    {"Piece of the Holy Beast, Panther", 0x85},
-    {"Piece of the Holy Beast, Serpent", 0x86},
-    {"Plaga Sample", 0x0C},
-    {"Platinum Sword", 0xC4},
-    {"Prison Key", 0xC3},
-    {"Ruby", 0x77},
-    {"Serpent Ornament", 0x39},
-    {"Waste Disposal Key", 0x92},
-    {"Yellow Catseye", 0x61}
+            {"Matilda", 0x03},
+            {"Bow Gun", 0x10},
+            {"Chicago Typewriter", 0x34},
+            {"Combat Knife", 0x38},
+            {"Custom TMP", 0x3E},
+            {"Handcannon", 0x37},
+            {"Handgun", 0x23},
+            {"Handgun w/ Silencer", 0x24},
+            {"Infinite Launcher", 0x6D},
+            {"Mine Thrower", 0x36},
+            {"P.R.L 412", 0x41},
+            {"Red9", 0x25},
+            {"Red9 with Stock", 0x26},
+            {"Rifle (semi auto) with Infrared Scope", 0x51},
+            {"Rocket Launcher Special", 0x17},
+            {"Shotgun", 0x47},
+            {"Killer7", 0x2A},
+            {"Killer7 w/ Silencer", 0x2B},
+            {"Punisher", 0x40},
+            {"Krauser's Bow", 0x52},
+            {"Krauser's Knife", 0x0D},
+            {"Hand Grenade", 0x01},
+            {"Flash Grenade", 0x0E},
+            {"Incendiary Grenade", 0x02},
+            {"Arrows", 0x72},
+            {"Bowgun Bolts", 0x11},
+            {"Chicago Typewriter Ammo", 0x6A},
+            {"Handgun Ammo", 0x04},
+            {"Handcannon Ammo", 0x1A},
+            {"Shotgun Ammo", 0x18},
+            {"Rifle Ammo", 0x07},
+            {"Rifle Ammo (Infrared)", 0xA0},
+            {"TMP Ammo", 0x20},
+            {"First Aid", 0x05},
+            {"Green Herb", 0x06},
+            {"Mixed Herbs (G+R)", 0x14},
+            {"Mixed Herbs (G+R+Y)", 0x15},
+            {"Mixed Herbs (R+Y)", 0xA8},
+            {"Activation Key (blue)", 0x31},
+            {"Activation Key (red)", 0x33},
+            {"Black Bass", 0x95},
+            {"Black Bass (L)", 0x97},
+            {"Blacktail", 0x27},
+            {"Blacktail with Silencer", 0x28},
+            {"Bonus Time", 0x73},
+            {"Brass Pocket Watch", 0x59},
+            {"Camp Key", 0x8C},
+            {"Castle Gate Key", 0xA7},
+            {"Elegant Headdress", 0x5A},
+            {"Emergency Lock Key Card", 0x74},
+            {"Emerald", 0xA1},
+            {"Freezer Key Card", 0x84},
+            {"Gallery Key", 0xA3},
+            {"Gold Chicken Egg", 0x0A},
+            {"Gold Sword", 0x80},
+            {"Green Catseye", 0x5F},
+            {"Hexagonal Emblem", 0xA6},
+            {"JetSki Key", 0x88},
+            {"Key to the Mine", 0x7B},
+            {"Lift Activation Key", 0x8E},
+            {"Pearl Pendant", 0x58},
+            {"Piece of the Holy Beast, Eagle", 0x87},
+            {"Piece of the Holy Beast, Panther", 0x85},
+            {"Piece of the Holy Beast, Serpent", 0x86},
+            {"Plaga Sample", 0x0C},
+            {"Platinum Sword", 0xC4},
+            {"Prison Key", 0xC3},
+            {"Ruby", 0x77},
+            {"Serpent Ornament", 0x39},
+            {"Waste Disposal Key", 0x92},
+            {"Yellow Catseye", 0x61}
         };
 
         Dictionary<string, byte> ammoAndSmallItems = new Dictionary<string, byte>
-{
-    {"Hand Grenade", 0x01},
-    {"Flash Grenade", 0x0E},
-    {"Incendiary Grenade", 0x02},
-    {"Arrows", 0x72},
-    {"Bowgun Bolts", 0x11},
-    {"Chicago Typewriter Ammo", 0x6A},
-    {"Handgun Ammo", 0x04},
-    {"Handcannon Ammo", 0x1A},
-    {"Shotgun Ammo", 0x18},
-    {"Rifle Ammo", 0x07},
-    {"Rifle Ammo (Infrared)", 0xA0},
-    {"TMP Ammo", 0x20},
-    {"First Aid", 0x05},
-    {"Mixed Herbs (G+R)", 0x14},
-    {"Mixed Herbs (G+R+Y)", 0x15},
-    {"Mixed Herbs (R+Y)", 0xA8},
-    {"Plaga Sample", 0x0C}
-};
+        {
+            {"Hand Grenade", 0x01},
+            {"Flash Grenade", 0x0E},
+            {"Incendiary Grenade", 0x02},
+            {"Arrows", 0x72},
+            {"Bowgun Bolts", 0x11},
+            {"Chicago Typewriter Ammo", 0x6A},
+            {"Handgun Ammo", 0x04},
+            {"Handcannon Ammo", 0x1A},
+            {"Shotgun Ammo", 0x18},
+            {"Rifle Ammo", 0x07},
+            {"Rifle Ammo (Infrared)", 0xA0},
+            {"TMP Ammo", 0x20},
+            {"First Aid", 0x05},
+            {"Mixed Herbs (G+R)", 0x14},
+            {"Mixed Herbs (G+R+Y)", 0x15},
+            {"Mixed Herbs (R+Y)", 0xA8},
+            {"Plaga Sample", 0x0C}
+        };
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -417,29 +438,19 @@ namespace RE4TestApp
             }
         }
 
+        private Random random = new Random();
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             string text = label2.Text;
             label2.Text = text.Substring(1) + text[0];
-            Color rainbowColor = ColorFromHSL(hue, 1.0, 0.5);
-            label2.ForeColor = rainbowColor;
-            hue = (hue + 1) % 360;
+            label2.ForeColor = GetRandomColor();
         }
-        private Color ColorFromHSL(int hue, double saturation, double lightness) =>
-            Color.FromArgb(
-                (int)Math.Round((hue / 60.0) % 2 == 0
-                    ? (1 - Math.Abs(2 * lightness - 1)) * saturation * 255
-                    : 0
-                ),
-                (int)Math.Round((hue / 60.0) % 2 == 0
-                    ? 0
-                    : (1 - Math.Abs(2 * (hue / 60.0) % 2 - 1)) * saturation * 255
-                ),
-                (int)Math.Round((hue / 60.0) % 2 == 0
-                    ? (1 - Math.Abs(2 * (hue / 60.0) % 2 - 1)) * saturation * 255
-                    : (1 - Math.Abs(2 * lightness - 1)) * saturation * 255
-                )
-            );
+
+        private Color GetRandomColor()
+        {
+            return Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
+        }
 
         private void button9_Click_1(object sender, EventArgs e)
         {
@@ -494,22 +505,22 @@ namespace RE4TestApp
             }
         }
 
-        private bool godmodeleon;
+        private bool extrahealthleon;
         private void button12_Click(object sender, EventArgs e)
         {
             try
             {
-                if (!godmodeleon)
+                if (!extrahealthleon)
                 {
-                    button12.Text = "Godmode Leon: ON";
+                    button12.Text = "Extra Health Leon: ON";
                     JRPC.SetMemory(3261454420U, new byte[] { 0x7F });
                 }
                 else
                 {
-                    button12.Text = "Godmode Leon: OFF";
+                    button12.Text = "Extra Health Leon: OFF";
                     JRPC.SetMemory(3261454420U, new byte[] { 0x6 });
                 }
-                godmodeleon = !godmodeleon;
+                extrahealthleon = !extrahealthleon;
             }
             catch (Exception ex)
             {
@@ -517,22 +528,22 @@ namespace RE4TestApp
             }
         }
 
-        private bool godmodeashley;
+        private bool extrahealthashley;
         private void button13_Click(object sender, EventArgs e)
         {
             try
             {
-                if (!godmodeashley)
+                if (!extrahealthashley)
                 {
-                    button13.Text = "Godmode Ashley: ON";
+                    button13.Text = "Extra Health Ashley: ON";
                     JRPC.SetMemory(3261454424U, new byte[] { 0x7F });
                 }
                 else
                 {
-                    button13.Text = "Godmode Ashley: OFF";
-                    JRPC.SetMemory(3261454424U, new byte[] { 0x6 });
+                    button13.Text = "Extra Health Ashley: OFF";
+                    JRPC.SetMemory(3261454424U, new byte[] { 0x5 });
                 }
-                godmodeashley = !godmodeashley;
+                extrahealthashley = !extrahealthashley;
             }
             catch (Exception ex)
             {
@@ -560,6 +571,18 @@ namespace RE4TestApp
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred", "Error");
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            foreach (var amountOffsets in itemAmountOffsets.Values)
+            {
+                foreach (var amountOffset in amountOffsets)
+                {
+                    byte[] amountBytes = new byte[] { 0x03, 0xE7 };
+                    JRPC.SetMemory(amountOffset, amountBytes);
+                }
             }
         }
     }

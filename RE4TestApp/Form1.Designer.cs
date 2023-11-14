@@ -39,6 +39,7 @@
             comboBox3 = new ComboBox();
             button4 = new Button();
             groupBox1 = new GroupBox();
+            button15 = new Button();
             button9 = new Button();
             button8 = new Button();
             button10 = new Button();
@@ -152,6 +153,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(button15);
             groupBox1.Controls.Add(button9);
             groupBox1.Controls.Add(button8);
             groupBox1.Controls.Add(button10);
@@ -172,6 +174,17 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Inventory Changer";
             // 
+            // button15
+            // 
+            button15.ForeColor = Color.Black;
+            button15.Location = new Point(75, 127);
+            button15.Name = "button15";
+            button15.Size = new Size(115, 24);
+            button15.TabIndex = 14;
+            button15.Text = "Max All Ammo";
+            button15.UseVisualStyleBackColor = true;
+            button15.Click += button15_Click;
+            // 
             // button9
             // 
             button9.ForeColor = Color.Black;
@@ -186,11 +199,11 @@
             // button8
             // 
             button8.ForeColor = Color.Black;
-            button8.Location = new Point(295, 109);
+            button8.Location = new Point(196, 128);
             button8.Name = "button8";
-            button8.Size = new Size(136, 34);
+            button8.Size = new Size(115, 24);
             button8.TabIndex = 12;
-            button8.Text = "Randomize Weapons";
+            button8.Text = "Randomize";
             button8.UseVisualStyleBackColor = true;
             button8.Click += button8_Click_1;
             // 
@@ -208,9 +221,9 @@
             // button7
             // 
             button7.ForeColor = Color.Black;
-            button7.Location = new Point(153, 109);
+            button7.Location = new Point(316, 127);
             button7.Name = "button7";
-            button7.Size = new Size(136, 34);
+            button7.Size = new Size(115, 25);
             button7.TabIndex = 11;
             button7.Text = "Weapon Check";
             button7.UseVisualStyleBackColor = true;
@@ -263,23 +276,25 @@
             // 
             // button13
             // 
+            button13.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button13.ForeColor = Color.Black;
             button13.Location = new Point(11, 62);
             button13.Name = "button13";
             button13.Size = new Size(136, 34);
             button13.TabIndex = 13;
-            button13.Text = "Godmode Ashley";
+            button13.Text = "Extra Health Ashley";
             button13.UseVisualStyleBackColor = true;
             button13.Click += button13_Click;
             // 
             // button12
             // 
+            button12.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button12.ForeColor = Color.Black;
             button12.Location = new Point(11, 22);
             button12.Name = "button12";
             button12.Size = new Size(136, 34);
             button12.TabIndex = 12;
-            button12.Text = "Godmode Leon";
+            button12.Text = "Extra Health Leon";
             button12.UseVisualStyleBackColor = true;
             button12.Click += button12_Click;
             // 
@@ -320,7 +335,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.Transparent;
-            label2.Location = new Point(363, 89);
+            label2.Location = new Point(238, 89);
             label2.Name = "label2";
             label2.Size = new Size(96, 15);
             label2.TabIndex = 11;
@@ -414,5 +429,6 @@
         private Button button13;
         private Button button12;
         private Button button14;
+        private Button button15;
     }
 }
