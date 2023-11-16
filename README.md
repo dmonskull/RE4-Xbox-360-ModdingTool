@@ -1,1 +1,3 @@
-# RE4TestApp
+# RE4 Modding Tool made by DMON
+
+Hope you all enjoy :)
