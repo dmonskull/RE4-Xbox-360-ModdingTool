@@ -584,6 +584,7 @@ namespace RE4TestApp
                     JRPC.SetMemory(amountOffset, amountBytes);
                 }
             }
+            MessageBox.Show("Max Amount for ALL slots has been set!", ":)");
         }
     }
 }
